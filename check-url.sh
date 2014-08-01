@@ -3,8 +3,34 @@
 #Author: Jason Dew
 #Date: 2013-06-19
 
+
+CURL_CMD=/usr/bin/curl
+CURL_OPT="-s -I -L -w \"URL-Effective: %{url_effective}\ntime_total: %{time_total}\""
+SEC_OPT="-k"
+
+while getopts ":s" OPT; do
+    case $OPT in
+        s)
+            SEC_OPT=""
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG"
+            echo "Usage: `basename $0` [-s] URL"
+            exit 1
+            ;;
+    esac
+done
+
 #curl -s -m 20 -I -L -k -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $1
-curl -s -I -L -k -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $1
+#curl -s -I -L -k -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $1
+#echo "Running: $CURL_CMD $CURL_OPT $BASH_ARGV"
+#$CURL_CMD $CURL_OPT $BASH_ARGV
+
+#####DEBUG#####
+echo "\$BASH_ARGV: $BASH_ARGV"
+#####DEBUG#####
+
+curl -s -I -L $SEC_OPT -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $BASH_ARGV
 EXIT_STATUS=$?
 
 #needs a trailing newline
