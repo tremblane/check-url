@@ -26,9 +26,6 @@ done
 #echo "Running: $CURL_CMD $CURL_OPT $BASH_ARGV"
 #$CURL_CMD $CURL_OPT $BASH_ARGV
 
-#####DEBUG#####
-echo "\$BASH_ARGV: $BASH_ARGV"
-#####DEBUG#####
 
 curl -s -I -L $SEC_OPT -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $BASH_ARGV
 EXIT_STATUS=$?
