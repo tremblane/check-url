@@ -40,28 +40,28 @@ case $EXIT_STATUS in
 	#echo "exit 0"
 	;;
 6 )
-	echo "Error: Couldn't resolve host. The given remote host was not resolved."
+	echo "Error $EXIT_STATUS: Couldn't resolve host. The given remote host was not resolved."
 	;;
 7 )
-	echo "Error: Failed to connect to host"
+	echo "Error $EXIT_STATUS: Failed to connect to host"
 	;;
 28 )
-	echo "Error: Operation timeout. The specified time-out period was reached according to the conditions."
+	echo "Error $EXIT_STATUS: Operation timeout. The specified time-out period was reached according to the conditions."
 	;;
 47 )
-	echo "Error: Too many redirects. When following redirects, curl hit the maximum amount."
+	echo "Error $EXIT_STATUS: Too many redirects. When following redirects, curl hit the maximum amount."
 	;;
 51 )
-	echo "Error: The remote peer's SSL certificate wasn't ok"
+	echo "Error $EXIT_STATUS: The remote peer's SSL certificate wasn't ok"
 	;;
 52 )
-	echo "Error: The server didn't reply anything, which here is considered an error."
+	echo "Error $EXIT_STATUS: The server didn't reply anything, which here is considered an error."
 	;;
 56 )
-	echo "Error: Failure in receiving network data."
+	echo "Error $EXIT_STATUS: Failure in receiving network data."
 	;;
 60 )
-	echo "Error: Problem with the CA cert (path? permission?)"
+	echo "Error $EXIT_STATUS: Problem with the CA cert (path? permission?)"
 	;;
 * )
 	#Un-caught error code
