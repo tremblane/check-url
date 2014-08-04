@@ -51,6 +51,9 @@ case $EXIT_STATUS in
 47 )
 	echo "Error: Too many redirects. When following redirects, curl hit the maximum amount."
 	;;
+51 )
+	echo "Error: The remote peer's SSL certificate wasn't ok"
+	;;
 52 )
 	echo "Error: The server didn't reply anything, which here is considered an error."
 	;;
