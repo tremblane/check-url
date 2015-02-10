@@ -2,6 +2,7 @@
 #curl-full.sh - Uses curl to check the HTTP headers of a URL, including every hop of any redirects
 #Author: Jason Dew
 #Date: 2013-06-19
+# (add comment for testing)
 
 
 CURL_CMD=/usr/bin/curl
