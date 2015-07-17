@@ -2,17 +2,17 @@
 #curl-full.sh - Uses curl to check the HTTP headers of a URL, including every hop of any redirects
 #Author: Jason Dew
 #Date: 2013-06-19
-# (add comment for testing)
 
 
 CURL_CMD=/usr/bin/curl
-CURL_OPT="-s -I -L -w \"URL-Effective: %{url_effective}\ntime_total: %{time_total}\""
-SEC_OPT="-k"
+CURL_OPT='-s -I -L -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}"'
+#SEC_OPT="-k"
+SEC_OPT=""
 
 while getopts ":s" OPT; do
     case $OPT in
         s)
-            SEC_OPT=""
+            SEC_OPT="-k"
             ;;
         \?)
             echo "Invalid option: -$OPTARG"
@@ -28,7 +28,8 @@ done
 #$CURL_CMD $CURL_OPT $BASH_ARGV
 
 
-curl -s -I -L $SEC_OPT -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $BASH_ARGV
+#curl -s -I -L $SEC_OPT -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $BASH_ARGV
+$CURL_CMD -s -I -L $SEC_OPT -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $BASH_ARGV
 EXIT_STATUS=$?
 
 #needs a trailing newline
