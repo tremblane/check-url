@@ -50,6 +50,9 @@ case $EXIT_STATUS in
 28 )
 	echo "Error $EXIT_STATUS: Operation timeout. The specified time-out period was reached according to the conditions."
 	;;
+35 )
+	echo "Error $EXIT_STATUS: A problem occurred somewhere in the SSL/TLS handshake. You really want the error buffer and read the message there as it pinpoints the problem slightly more. Could be certificates (file formats, paths, permissions), passwords, and others."
+	;;
 47 )
 	echo "Error $EXIT_STATUS: Too many redirects. When following redirects, curl hit the maximum amount."
 	;;
