@@ -9,14 +9,15 @@ CURL_OPT='-s -I -L -w "URL-Effective: %{url_effective}\ntime_total: %{time_total
 #SEC_OPT="-k"
 SEC_OPT=""
 
-while getopts ":s" OPT; do
+while getopts ":k" OPT; do
     case $OPT in
-        s)
+        k)
             SEC_OPT="-k"
             ;;
         \?)
             echo "Invalid option: -$OPTARG"
-            echo "Usage: `basename $0` [-s] URL"
+            echo "Usage: `basename $0` [-k] URL"
+	    echo "(-k for insecure check, ignore cert errors)"
             exit 1
             ;;
     esac
@@ -29,7 +30,8 @@ done
 
 
 #curl -s -I -L $SEC_OPT -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $BASH_ARGV
-$CURL_CMD -s -I -L $SEC_OPT -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $BASH_ARGV
+#$CURL_CMD -s -I -L $SEC_OPT -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $BASH_ARGV
+$CURL_CMD -s -v -L $SEC_OPT -w "URL-Effective: %{url_effective}\ntime_total: %{time_total}" $BASH_ARGV -o /dev/null
 EXIT_STATUS=$?
 
 #needs a trailing newline
